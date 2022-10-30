@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>homework1-es6-classes</title>
+  </head>
+  <body>
+    <script>
+      //Прототипне наслідування в Javascript розширює властивості об'єкта, від якого ми наслідуємось.
+      // У конструкторі класу-нащадка ключове слово super() використовується як функція, що викликає батьківський конструктор, 
+      // а також може бути використано для виклику функцй батьківського об'єкта.
+      class Employee {
+        constructor(name, age, salary) {
+          this._name = name;
+          this._age = age;
+          this._salary = salary;
+        }
+
+        get name() {
+          return this._name;
+        }
+        set name(newName) {
+          this._name = newName;
+        }
+        get age() {
+          return this._age;
+        }
+        set age(newAge) {
+          this._age = newAge;
+        }
+        get salary() {
+          return this._salary;
+        }
+        set salary(newSalary) {
+          this._salary = newSalary;
+        }
+      }
+
+      class Programmer extends Employee {
+        constructor(name, age, salary, lang) {
+          super(name, age, salary);
+          this._lang = lang;
+        }
+        get salary() {
+          return this._salary * 3;
+        }
+        set salary(newSalary) {
+          this._salary = newSalary;
+        }
+        get lang() {
+          return this._lang;
+        }
+        set lang(newLang) {
+          this._lang = newLang;
+        }
+      }
+
+      const programmer1 = new Programmer("Pavel", 41, 60000, "EN");
+      const programmer2 = new Programmer("Ivan", 22, 30000, "UA");
+
+      console.log(
+        `programmer1 - name:${programmer1.name}, age:${programmer1.age}, salary:${programmer1.salary}, lang:${programmer1.lang}`
+      );
+      console.log(
+        `programmer2 - name:${programmer2.name}, age:${programmer2.age}, salary:${programmer2.salary}, lang:${programmer2.lang}`
+      );
+    </script>
+  </body>
+</html>
